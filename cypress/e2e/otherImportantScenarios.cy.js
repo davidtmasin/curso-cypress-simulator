@@ -9,7 +9,7 @@ describe("template spec", () => {
     });
     cy.contains("button", "Login").click();
   });
-  
+
   //A partir deste próximo caso de teste, daremos início àqueles não-essenciais porém, necessários.
   it("it logs out successfully", () => {
     cy.get("#sandwich-menu").click();
@@ -54,14 +54,69 @@ describe("template spec", () => {
       .and("contain", "cy.visit() // Visited URL");
   });
 
-  
-  it("Run button - enabled/disabled states", () => {});
+  it("it checks the run button disabled and enabled states", () => {
+    cy.contains("#runButton", "Run").should("be.disabled");
 
-  it("reset textarea on logout and login", () => {});
+    cy.get('textarea[placeholder="Write your Cypress code here..."]').type(
+      "help"
+    );
 
-  it("disabled run button on logout and login", () => {});
+    cy.contains("#runButton", "Run").should("be.enabled");
 
-  it("reset  output on logout and login", () => {});
+    cy.get('textarea[placeholder="Write your Cypress code here..."]').clear();
+
+    cy.contains("#runButton", "Run").should("be.disabled");
+  });
+
+  it("it clears the code input when logging off then logging in again", () => {
+    cy.get("textarea[placeholder='Write your Cypress code here...']").type(
+      "cy.log('Oi, meu chapa!')"
+    );
+
+    cy.get("#sandwich-menu").click();
+    cy.contains("button", "Logout").click();
+    cy.contains("button", "Login").click();
+
+    cy.get("textarea[placeholder='Write your Cypress code here...']").should(
+      "have.value",
+      ""
+    );
+  });
+
+  it("it disables the run button when logging off then logging in again", () => {
+    cy.get("textarea[placeholder='Write your Cypress code here...']").type(
+      "cy.log('Oi, meu chapa!')"
+    );
+
+    cy.contains("#runButton", "Run").should("be.enabled");
+
+    cy.get("#sandwich-menu").click();
+    cy.contains("button", "Logout").click();
+    cy.contains("button", "Login").click();
+
+    cy.contains("#runButton", "Run").should("be.disabled");
+  });
+
+  it.only("it clears the code output when logging off then logging in again", () => {
+    cy.get("textarea[placeholder='Write your Cypress code here...']").type(
+      "cy.log('Oi, meu chapa!')"
+    );
+    cy.contains("#runButton", "Run").click();
+
+    cy.get("#outputArea", { timeout: 6000 })
+      .should("contain", "Success:")
+      .and(
+        "contain",
+        "cy.log('Oi, meu chapa!') // Logged message 'Oi, meu chapa!'"
+      )
+      .should("be.visible");
+
+    cy.get("#sandwich-menu").click();
+    cy.contains("button", "Logout").click();
+    cy.contains("button", "Login").click();
+
+    cy.get("#outputArea").should("not.contain", "cy.log('Oi, meu chapa!')");
+  });
 
   it("no cooking banner on the login page", () => {});
 });
