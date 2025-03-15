@@ -126,15 +126,36 @@ describe("Cypress Simulator", () => {
 
   it("it shows and hides the logout button", () => {
     cy.get("#sandwich-menu").click();
-    
-    cy.contains('button','Logout').should('be.visible')
+
+    cy.contains("button", "Logout").should("be.visible");
 
     cy.get("#sandwich-menu").click();
 
-    cy.contains('button','Logout').should('not.be.visible')
+    cy.contains("button", "Logout").should("not.be.visible");
   });
 
-  it("Running... state", () => {});
+  it("it shows the running state before showing the final result", () => {
+    cy.contains("button", "Run").should("have.attr", "disabled");
+
+    cy.get("#codeInput").type("cy.visit()");
+
+    cy.contains("button", "Run").should("not.have.attr", "disabled");
+
+    cy.contains("button", "Run").click();
+
+    cy.contains("button", "Running...")
+      .should("be.visible")
+      .and("have.attr", "disabled");
+    cy.contains("#outputArea", "Running... Please wait.").should("be.visible");
+    cy.contains("button", "Running...", { timeout: 6000 }).should("not.exist");
+    cy.contains("button", "Run").should("be.visible");
+    cy.contains("#outputArea", "Running... Please wait.", {
+      timeout: 6000,
+    }).should("not.exist");
+    cy.get("#outputArea")
+      .should("contain", "Success")
+      .and("contain", "cy.visit() // Visited URL");
+  });
 
   it("Run button - enabled/disabled states", () => {});
 
