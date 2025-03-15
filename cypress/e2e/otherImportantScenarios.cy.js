@@ -54,10 +54,7 @@ describe("template spec", () => {
       .and("contain", "cy.visit() // Visited URL");
   });
 
-  it("captcha button states", () => {});
-
-  it("captcha error", () => {});
-
+  
   it("Run button - enabled/disabled states", () => {});
 
   it("reset textarea on logout and login", () => {});

@@ -5,6 +5,7 @@ describe("Cypress Simulator - Cookies Consent", () => {
     cy.visit("./src/index.html?skipCaptcha=true");
     cy.contains("button", "Login").click();
   });
+  
   it("it consents on the cookies usage", () => {
     cy.get("#cookieConsent")
       .as("cookieConsentBanner")
