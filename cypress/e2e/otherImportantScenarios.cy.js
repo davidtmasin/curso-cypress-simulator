@@ -97,7 +97,7 @@ describe("template spec", () => {
     cy.contains("#runButton", "Run").should("be.disabled");
   });
 
-  it.only("it clears the code output when logging off then logging in again", () => {
+  it("it clears the code output when logging off then logging in again", () => {
     cy.get("textarea[placeholder='Write your Cypress code here...']").type(
       "cy.log('Oi, meu chapa!')"
     );
@@ -118,5 +118,12 @@ describe("template spec", () => {
     cy.get("#outputArea").should("not.contain", "cy.log('Oi, meu chapa!')");
   });
 
-  it("no cooking banner on the login page", () => {});
+  it.only("it doesn't show the cookie consent banner on the login page", () => {
+    cy.clearAllLocalStorage();
+    cy.reload();
+
+    cy.contains("button", "Login").should("be.visible");
+
+    cy.get("#cookieConsent").should("not.be.visible");
+  });
 });
