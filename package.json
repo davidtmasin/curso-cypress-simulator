@@ -4,7 +4,8 @@
   "description": "Curso 'Cypress Simulator' da Escola Talking About Testing.",
   "main": "src/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "cypress open",
+    "test": "cypress run"
   },
   "keywords": [
     "Testing",
@@ -16,5 +17,16 @@
   ],
   "author": "Walmyr <wlsf82@gmail.com> (https://walmyr.dev/)",
   "license": "MIT",
-  "type": "commonjs"
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidtmasin/curso-cypress-simulator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davidtmasin/curso-cypress-simulator/issues"
+  },
+  "homepage": "https://github.com/davidtmasin/curso-cypress-simulator#readme",
+  "devDependencies": {
+    "cypress": "^13.17.0"
+  }
 }
