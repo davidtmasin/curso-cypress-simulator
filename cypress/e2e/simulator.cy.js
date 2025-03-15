@@ -10,7 +10,7 @@ describe("Cypress Simulator", () => {
     cy.contains("button", "Login").click();
   });
 
-  it.only("it successfully simulates a Cypress command (e.g., cy.log('Yay!'))", () => {
+  it("it successfully simulates a Cypress command (e.g., cy.log('Yay!'))", () => {
     cy.get("textarea[placeholder='Write your Cypress code here...']").type(
       "cy.log('Yay!')"
     );
@@ -22,7 +22,7 @@ describe("Cypress Simulator", () => {
       .and("be.visible");
   });
 
-  it.only("it shows an error when entering and running an invalid Cypress command (e.g., cy.run())", () => {
+  it("it shows an error when entering and running an invalid Cypress command (e.g., cy.run())", () => {
     cy.get("textarea[placeholder='Write your Cypress code here...']").type(
       "cy.run()"
     );
@@ -34,7 +34,7 @@ describe("Cypress Simulator", () => {
       .and("be.visible");
   });
 
-  it.only("it shows a warning when entering and running a not-implemented Cypress command (e.g., cy.contains('Login'))", () => {
+  it("it shows a warning when entering and running a not-implemented Cypress command (e.g., cy.contains('Login'))", () => {
     cy.get("textarea[placeholder='Write your Cypress code here...']").type(
       "cy.contains('Login')"
     );
@@ -46,7 +46,7 @@ describe("Cypress Simulator", () => {
       .and("be.visible");
   });
 
-  it.only(" it shows a an error when entering and running a valid Cypress command without parentheses (e.g., cy.visit)", () => {
+  it(" it shows a an error when entering and running a valid Cypress command without parentheses (e.g., cy.visit)", () => {
     cy.get("textarea[placeholder='Write your Cypress code here...']").type(
       "cy.visit"
     );
@@ -58,7 +58,21 @@ describe("Cypress Simulator", () => {
       .and("be.visible");
   });
 
-  it("help", () => {});
+  it("it asks for help and gets common Cypress commands and examples with a link to the docs", () => {
+    cy.get("textarea[placeholder='Write your Cypress code here...']").type(
+      "help"
+    );
+    cy.contains("button", "Run").click();
+
+    cy.get("#outputArea", { timeout: 6000 })
+      .should("contain", "Common Cypress commands and examples:")
+      .and(
+        "contain",
+        "For more commands and details, visit the official Cypress API documentation."
+      )
+      .and("be.visible");
+  });
+
   it("maximize/minimize", () => {});
   it("logout", () => {});
   it("show and hide logout button", () => {});
