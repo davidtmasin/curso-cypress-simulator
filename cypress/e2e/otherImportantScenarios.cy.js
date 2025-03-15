@@ -1,4 +1,15 @@
-describe('template spec', () => {
+/// <reference types="cypress"/>
+
+describe("template spec", () => {
+  beforeEach(() => {
+    cy.visit("./src/index.html?skipCaptcha=true", {
+      onBeforeLoad(windowBrowser) {
+        windowBrowser.localStorage.setItem("cookieConsent", "accepted");
+      },
+    });
+    cy.contains("button", "Login").click();
+  });
+  
   //A partir deste próximo caso de teste, daremos início àqueles não-essenciais porém, necessários.
   it("it logs out successfully", () => {
     cy.get("#sandwich-menu").click();
@@ -42,11 +53,11 @@ describe('template spec', () => {
       .should("contain", "Success")
       .and("contain", "cy.visit() // Visited URL");
   });
-  
+
   it("captcha button states", () => {});
-  
+
   it("captcha error", () => {});
-  
+
   it("Run button - enabled/disabled states", () => {});
 
   it("reset textarea on logout and login", () => {});
@@ -56,4 +67,4 @@ describe('template spec', () => {
   it("reset  output on logout and login", () => {});
 
   it("no cooking banner on the login page", () => {});
-})
+});
