@@ -118,7 +118,7 @@ describe("template spec", () => {
     cy.get("#outputArea").should("not.contain", "cy.log('Oi, meu chapa!')");
   });
 
-  it.only("it doesn't show the cookie consent banner on the login page", () => {
+  it("it doesn't show the cookie consent banner on the login page", () => {
     cy.clearAllLocalStorage();
     cy.reload();
 
