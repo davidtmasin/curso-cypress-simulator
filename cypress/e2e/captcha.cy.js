@@ -3,7 +3,6 @@
 describe("Cypress Simulator - Captcha", () => {
   beforeEach(() => {
     cy.visit("./src/index.html");
-    cy.injectAxe();
     cy.contains("button", "Login").click();
   });
 

@@ -7,7 +7,6 @@ describe("Cypress Simulator - Smoke Test", () => {
         windowBrowser.localStorage.setItem("cookieConsent", "accepted");
       },
     });
-    cy.injectAxe();
     cy.contains("button", "Login").click();
   });
 
