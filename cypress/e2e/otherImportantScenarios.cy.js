@@ -2,12 +2,12 @@
 
 describe("template spec", () => {
   beforeEach(() => {
+    cy.login();
     cy.visit("./src/index.html?skipCaptcha=true", {
       onBeforeLoad(windowBrowser) {
         windowBrowser.localStorage.setItem("cookieConsent", "accepted");
       },
     });
-    cy.contains("button", "Login").click();
   });
 
   //A partir deste próximo caso de teste, daremos início àqueles não-essenciais porém, necessários.
@@ -98,10 +98,7 @@ describe("template spec", () => {
   });
 
   it("it clears the code output when logging off then logging in again", () => {
-    cy.get("textarea[placeholder='Write your Cypress code here...']").type(
-      "cy.log('Oi, meu chapa!')"
-    );
-    cy.contains("#runButton", "Run").click();
+    cy.run("cy.log('Oi, meu chapa!')");
 
     cy.get("#outputArea", { timeout: 6000 })
       .should("contain", "Success:")

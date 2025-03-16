@@ -2,19 +2,20 @@
 
 describe("Cypress Simulator - Smoke Test", () => {
   beforeEach(() => {
+    cy.login();
     cy.visit("./src/index.html?skipCaptcha=true", {
       onBeforeLoad(windowBrowser) {
         windowBrowser.localStorage.setItem("cookieConsent", "accepted");
       },
     });
-    cy.contains("button", "Login").click();
   });
 
   it("it successfully simulates a Cypress command (e.g., cy.log('Yay!'))", () => {
-    cy.get("textarea[placeholder='Write your Cypress code here...']").type(
-      "cy.log('Yay!')"
-    );
-    cy.contains("button", "Run").click();
+    // cy.get("textarea[placeholder='Write your Cypress code here...']").type(
+    //   "cy.log('Yay!')"
+    // );
+    // cy.contains("button", "Run").click();
+    cy.run("cy.log('Yay!')");
 
     cy.get("#outputArea", { timeout: 6000 })
       .should("contain", "Success:")
@@ -23,10 +24,7 @@ describe("Cypress Simulator - Smoke Test", () => {
   });
 
   it("it shows an error when entering and running an invalid Cypress command (e.g., cy.run())", () => {
-    cy.get("textarea[placeholder='Write your Cypress code here...']").type(
-      "cy.run()"
-    );
-    cy.contains("button", "Run").click();
+    cy.run("cy.run()");
 
     cy.get("#outputArea", { timeout: 6000 })
       .should("contain", "Error:")
@@ -35,10 +33,7 @@ describe("Cypress Simulator - Smoke Test", () => {
   });
 
   it("it shows a warning when entering and running a not-implemented Cypress command (e.g., cy.contains('Login'))", () => {
-    cy.get("textarea[placeholder='Write your Cypress code here...']").type(
-      "cy.contains('Login')"
-    );
-    cy.contains("button", "Run").click();
+    cy.run("cy.contains('Login')");
 
     cy.get("#outputArea", { timeout: 6000 })
       .should("contain", "Warning:")
@@ -47,10 +42,7 @@ describe("Cypress Simulator - Smoke Test", () => {
   });
 
   it(" it shows a an error when entering and running a valid Cypress command without parentheses (e.g., cy.visit)", () => {
-    cy.get("textarea[placeholder='Write your Cypress code here...']").type(
-      "cy.visit"
-    );
-    cy.contains("button", "Run").click();
+    cy.run("cy.visit");
 
     cy.get("#outputArea", { timeout: 6000 })
       .should("contain", "Error:")
@@ -59,10 +51,7 @@ describe("Cypress Simulator - Smoke Test", () => {
   });
 
   it("it asks for help and gets common Cypress commands and examples with a link to the docs", () => {
-    cy.get("textarea[placeholder='Write your Cypress code here...']").type(
-      "help"
-    );
-    cy.contains("button", "Run").click();
+    cy.run("help");
 
     cy.get("#outputArea", { timeout: 6000 })
       .should("contain", "Common Cypress commands and examples:")
@@ -84,10 +73,7 @@ describe("Cypress Simulator - Smoke Test", () => {
   });
 
   it("it maximizes and minimizes a simulation result", () => {
-    cy.get("textarea[placeholder='Write your Cypress code here...']").type(
-      "help"
-    );
-    cy.contains("button", "Run").click();
+    cy.run("help");
 
     cy.get(".expand-collapse")
       .as("btnExpandCollapse")
