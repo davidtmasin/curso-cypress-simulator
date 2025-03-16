@@ -7,6 +7,7 @@ describe("template spec", () => {
         windowBrowser.localStorage.setItem("cookieConsent", "accepted");
       },
     });
+    cy.injectAxe();
     cy.contains("button", "Login").click();
   });
 
