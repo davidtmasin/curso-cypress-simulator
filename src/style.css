@@ -175,7 +175,7 @@ button .spinner {
 }
 
 .error {
-  color: #f25f4c;
+  color: #f25f4c;  
 }
 
 .warning {
@@ -507,7 +507,7 @@ nav#menu button:hover {
 #captcha h2 {
   font-size: 1.8rem;
   margin-bottom: 20px;
-  color: #264EC5;
+  color: #264EC5; 
   font-weight: 600;
   text-align: center;
 }
@@ -559,6 +559,7 @@ nav#menu button:hover {
 }
 
 #captchaError {
+  color: #AB1A0D;
   text-align: center;
   font-size: 0.9rem;
   margin-top: 10px;
