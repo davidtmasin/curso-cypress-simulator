@@ -8,5 +8,5 @@ jobs:
         uses: actions/checkout@v4
       - name: Cypress run
         uses: cypress-io/github-action@v6
-        with:
-          command: npm run test
+        # with:
+        #   command: npm run test
