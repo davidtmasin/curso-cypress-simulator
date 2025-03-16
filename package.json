@@ -27,8 +27,8 @@
   },
   "homepage": "https://github.com/davidtmasin/curso-cypress-simulator#readme",
   "devDependencies": {
-    "axe-core": "^4.10.2",
-    "cypress": "^13.17.0",
-    "cypress-axe": "^1.5.0"
+    "axe-core": "^4.10.3",
+    "cypress": "^14.2.0",
+    "cypress-axe": "^1.6.0"
   }
 }
