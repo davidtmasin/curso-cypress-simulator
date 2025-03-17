@@ -11,7 +11,7 @@ describe("template spec", () => {
   });
 
   //A partir deste próximo caso de teste, daremos início àqueles não-essenciais porém, necessários.
-  it("it logs out successfully", () => {
+  it("logs out successfully", () => {
     cy.get("#sandwich-menu").click();
 
     cy.contains("button", "Logout").should("be.visible").click();
@@ -21,7 +21,7 @@ describe("template spec", () => {
     cy.get("#sandwich-menu").should("not.be.visible");
   });
 
-  it("it shows and hides the logout button", () => {
+  it("shows and hides the logout button", () => {
     cy.get("#sandwich-menu").click();
 
     cy.contains("button", "Logout").should("be.visible");
@@ -31,7 +31,7 @@ describe("template spec", () => {
     cy.contains("button", "Logout").should("not.be.visible");
   });
 
-  it("it shows the running state before showing the final result", () => {
+  it("shows the running state before showing the final result", () => {
     cy.contains("button", "Run").should("have.attr", "disabled");
 
     cy.get("#codeInput").type("cy.visit()");
@@ -54,7 +54,7 @@ describe("template spec", () => {
       .and("contain", "cy.visit() // Visited URL");
   });
 
-  it("it checks the run button disabled and enabled states", () => {
+  it("checks the run button disabled and enabled states", () => {
     cy.contains("#runButton", "Run").should("be.disabled");
 
     cy.get('textarea[placeholder="Write your Cypress code here..."]').type(
@@ -68,7 +68,7 @@ describe("template spec", () => {
     cy.contains("#runButton", "Run").should("be.disabled");
   });
 
-  it("it clears the code input when logging off then logging in again", () => {
+  it("clears the code input when logging off then logging in again", () => {
     cy.get("textarea[placeholder='Write your Cypress code here...']").type(
       "cy.log('Oi, meu chapa!')"
     );
@@ -83,7 +83,7 @@ describe("template spec", () => {
     );
   });
 
-  it("it disables the run button when logging off then logging in again", () => {
+  it("disables the run button when logging off then logging in again", () => {
     cy.get("textarea[placeholder='Write your Cypress code here...']").type(
       "cy.log('Oi, meu chapa!')"
     );
@@ -97,7 +97,7 @@ describe("template spec", () => {
     cy.contains("#runButton", "Run").should("be.disabled");
   });
 
-  it("it clears the code output when logging off then logging in again", () => {
+  it("clears the code output when logging off then logging in again", () => {
     cy.run("cy.log('Oi, meu chapa!')");
 
     cy.get("#outputArea", { timeout: 6000 })
@@ -115,7 +115,7 @@ describe("template spec", () => {
     cy.get("#outputArea").should("not.contain", "cy.log('Oi, meu chapa!')");
   });
 
-  it("it doesn't show the cookie consent banner on the login page", () => {
+  it("doesn't show the cookie consent banner on the login page", () => {
     cy.clearAllLocalStorage();
     cy.reload();
 

@@ -10,7 +10,7 @@ describe("Cypress Simulator - A11y Checks", () => {
     cy.injectAxe();
   });
 
-  it("it successfully simulates a Cypress command (e.g., cy.log('Yay!'))", () => {
+  it("successfully simulates a Cypress command (e.g., cy.log('Yay!'))", () => {
     cy.run("cy.log('Yay!')");
 
     cy.get("#outputArea", { timeout: 6000 })
@@ -22,7 +22,7 @@ describe("Cypress Simulator - A11y Checks", () => {
     cy.checkA11y(".success");
   });
 
-  it("it shows an error when entering and running an invalid Cypress command (e.g., cy.run())", () => {
+  it("shows an error when entering and running an invalid Cypress command (e.g., cy.run())", () => {
     cy.run("cy.run()");
 
     cy.get("#outputArea", { timeout: 6000 })
@@ -33,7 +33,7 @@ describe("Cypress Simulator - A11y Checks", () => {
     cy.checkA11y(".error");
   });
 
-  it("it shows a warning when entering and running a not-implemented Cypress command (e.g., cy.contains('Login'))", () => {
+  it("shows a warning when entering and running a not-implemented Cypress command (e.g., cy.contains('Login'))", () => {
     cy.run("cy.contains('Login')");
 
     cy.get("#outputArea", { timeout: 6000 })
@@ -44,7 +44,7 @@ describe("Cypress Simulator - A11y Checks", () => {
     cy.checkA11y(".warning");
   });
 
-  it("it asks for help and gets common Cypress commands and examples with a link to the docs", () => {
+  it("asks for help and gets common Cypress commands and examples with a link to the docs", () => {
     cy.run("help");
 
     cy.get("#outputArea", { timeout: 6000 })
@@ -68,7 +68,7 @@ describe("Cypress Simulator - A11y Checks", () => {
     cy.checkA11y("#outputArea");
   });
 
-  it("it maximizes and minimizes a simulation result", () => {
+  it("maximizes and minimizes a simulation result", () => {
     cy.run("help");
 
     cy.get(".expand-collapse")
@@ -98,7 +98,7 @@ describe("Cypress Simulator - A11y Checks", () => {
     cy.checkA11y();
   });
 
-  it("it logs out successfully", () => {
+  it("logs out successfully", () => {
     cy.get("#sandwich-menu").click();
     cy.contains("button", "Logout").should("be.visible").click();
 
@@ -109,7 +109,7 @@ describe("Cypress Simulator - A11y Checks", () => {
     cy.checkA11y();
   });
 
-  it("it shows and hides the logout button", () => {
+  it("shows and hides the logout button", () => {
     cy.get("#sandwich-menu").click();
 
     cy.contains("button", "Logout").should("be.visible");
@@ -121,7 +121,7 @@ describe("Cypress Simulator - A11y Checks", () => {
     cy.contains("button", "Logout").should("not.be.visible");
   });
 
-  it("it shows the running state before showing the final result", () => {
+  it("shows the running state before showing the final result", () => {
     cy.contains("button", "Run").should("have.attr", "disabled");
 
     cy.get("#codeInput").type("cy.visit()");
@@ -155,7 +155,7 @@ describe("Cookie consent - A11y Checks", () => {
     cy.injectAxe();
   });
 
-  it("it consents on the cookies usage", () => {
+  it("consents on the cookies usage", () => {
     cy.get("#cookieConsent").as("cookieConsentBanner").should("be.visible");
 
     cy.checkA11y();
@@ -176,7 +176,7 @@ describe("Captcha - A11y Checks", () => {
     cy.injectAxe();
   });
 
-  it("it finds no a11y issues on all captcha view states (button enabled/disabled and error)", () => {
+  it("finds no a11y issues on all captcha view states (button enabled/disabled and error)", () => {
     cy.contains("button", "Verify").should("be.disabled");
 
     cy.get("input[placeholder='Enter your answer']").type("1000");

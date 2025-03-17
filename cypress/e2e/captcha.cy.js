@@ -6,7 +6,7 @@ describe("Cypress Simulator - Captcha", () => {
     cy.contains("button", "Login").click();
   });
 
-  it("it disables the captcha verify button when no answer is provided or it's cleared", () => {
+  it("disables the captcha verify button when no answer is provided or it's cleared", () => {
     cy.contains("button", "Verify").should("be.disabled");
 
     cy.get("input[placeholder='Enter your answer']").type("1");
@@ -18,7 +18,7 @@ describe("Cypress Simulator - Captcha", () => {
     cy.contains("button", "Verify").should("be.disabled");
   });
 
-  it("it shows an error on a wrong captcha answer and goes back to its initial state", () => {
+  it("shows an error on a wrong captcha answer and goes back to its initial state", () => {
     cy.get("input[placeholder='Enter your answer']").type("100");
     cy.contains("button", "Verify").click();
 

@@ -10,7 +10,7 @@ describe("Cypress Simulator - Smoke Test", () => {
     });
   });
 
-  it("it successfully simulates a Cypress command (e.g., cy.log('Yay!'))", () => {
+  it("successfully simulates a Cypress command (e.g., cy.log('Yay!'))", () => {
     // cy.get("textarea[placeholder='Write your Cypress code here...']").type(
     //   "cy.log('Yay!')"
     // );
@@ -23,7 +23,7 @@ describe("Cypress Simulator - Smoke Test", () => {
       .and("be.visible");
   });
 
-  it("it shows an error when entering and running an invalid Cypress command (e.g., cy.run())", () => {
+  it("shows an error when entering and running an invalid Cypress command (e.g., cy.run())", () => {
     cy.run("cy.run()");
 
     cy.get("#outputArea", { timeout: 6000 })
@@ -32,7 +32,7 @@ describe("Cypress Simulator - Smoke Test", () => {
       .and("be.visible");
   });
 
-  it("it shows a warning when entering and running a not-implemented Cypress command (e.g., cy.contains('Login'))", () => {
+  it("shows a warning when entering and running a not-implemented Cypress command (e.g., cy.contains('Login'))", () => {
     cy.run("cy.contains('Login')");
 
     cy.get("#outputArea", { timeout: 6000 })
@@ -41,7 +41,7 @@ describe("Cypress Simulator - Smoke Test", () => {
       .and("be.visible");
   });
 
-  it(" it shows a an error when entering and running a valid Cypress command without parentheses (e.g., cy.visit)", () => {
+  it("shows a an error when entering and running a valid Cypress command without parentheses (e.g., cy.visit)", () => {
     cy.run("cy.visit");
 
     cy.get("#outputArea", { timeout: 6000 })
@@ -50,7 +50,7 @@ describe("Cypress Simulator - Smoke Test", () => {
       .and("be.visible");
   });
 
-  it("it asks for help and gets common Cypress commands and examples with a link to the docs", () => {
+  it("asks for help and gets common Cypress commands and examples with a link to the docs", () => {
     cy.run("help");
 
     cy.get("#outputArea", { timeout: 6000 })
@@ -72,7 +72,7 @@ describe("Cypress Simulator - Smoke Test", () => {
       .and("be.visible");
   });
 
-  it("it maximizes and minimizes a simulation result", () => {
+  it("maximizes and minimizes a simulation result", () => {
     cy.run("help");
 
     cy.get(".expand-collapse")
