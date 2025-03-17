@@ -10,17 +10,19 @@ describe("Cypress Simulator - Smoke Test", () => {
     });
   });
 
-  it("it successfully simulates a Cypress command (e.g., cy.log('Yay!'))", () => {
-    // cy.get("textarea[placeholder='Write your Cypress code here...']").type(
-    //   "cy.log('Yay!')"
-    // );
-    // cy.contains("button", "Run").click();
-    cy.run("cy.log('Yay!')");
+  Cypress._.times(100, () => {
+    it("it successfully simulates a Cypress command (e.g., cy.log('Yay!'))", () => {
+      // cy.get("textarea[placeholder='Write your Cypress code here...']").type(
+      //   "cy.log('Yay!')"
+      // );
+      // cy.contains("button", "Run").click();
+      cy.run("cy.log('Yay!')");
 
-    cy.get("#outputArea", { timeout: 6000 })
-      .should("contain", "Success:")
-      .and("contain", "cy.log('Yay!') // Logged message 'Yay!'")
-      .and("be.visible");
+      cy.get("#outputArea", { timeout: 6000 })
+        .should("contain", "Success:")
+        .and("contain", "cy.log('Yay!') // Logged message 'Yay!'")
+        .and("be.visible");
+    });
   });
 
   it("it shows an error when entering and running an invalid Cypress command (e.g., cy.run())", () => {
