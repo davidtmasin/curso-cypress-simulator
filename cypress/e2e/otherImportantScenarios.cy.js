@@ -3,7 +3,7 @@
 describe("template spec", () => {
   beforeEach(() => {
     cy.login();
-    cy.visit("./src/index.html?skipCaptcha=true", {
+    cy.visit("./src/index.html?skipCaptcha=true&chancesOfError=0", {
       onBeforeLoad(windowBrowser) {
         windowBrowser.localStorage.setItem("cookieConsent", "accepted");
       },

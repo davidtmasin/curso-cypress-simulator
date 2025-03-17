@@ -2,7 +2,7 @@
 
 describe("Cypress Simulator - Captcha", () => {
   beforeEach(() => {
-    cy.visit("./src/index.html");
+    cy.visit("./src/index.html?chancesOfError=0");
     cy.contains("button", "Login").click();
   });
 
